@@ -1,0 +1,27 @@
+@mixin make-responsive ($property, $min, $max) {
+	$start-responsive: 320px;
+	$finish-responsive: 1100px;
+	$n: 5;
+	$delta: (($finish-responsive - $start-responsive)/$n);
+	$deltaProperty: ($max - $min)/$n;
+
+	@for $i from 0 through ($n - 1) {
+		@media screen and (min-width: $start-responsive + $i*$delta)
+					and (max-width: $start-responsive + ($i+1)*$delta) {
+			#{$property}: round($min + $i*$deltaProperty);
+		}
+	}
+}
+
+
+@mixin make-responsive-custom ($property, $min, $max, $start-responsive, $finish-responsive, $n) {
+	$delta: (($finish-responsive - $start-responsive)/$n);
+	$deltaProperty: ($max - $min)/$n;
+
+	@for $i from 0 through ($n - 1) {
+		@media screen and (min-width: $start-responsive + $i*$delta)
+					and (max-width: $start-responsive + ($i+1)*$delta) {
+			#{$property}: round($min + $i*$deltaProperty);
+		}
+	}
+}
