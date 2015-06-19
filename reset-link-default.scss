@@ -1,0 +1,11 @@
+@mixin reset-link-default ($color) {
+    color: $color;
+    text-decoration: none;
+
+    &:hover,
+    &:active,
+    &:focus {
+        color: $color;
+        text-decoration: none;
+    }
+}
